@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Eigenvector : Vector{
+public class Eigenvector : Vector{
     
     var eigenvalue: Double
     

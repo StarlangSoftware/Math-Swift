@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Vector{
+public class Vector{
     
     private var __size : Int
     private var values : [Double]

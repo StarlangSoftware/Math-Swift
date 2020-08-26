@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DiscreteDistribution{
+public class DiscreteDistribution{
     
     private var sum: Double = 0.0
     private var data: [String: Int] = [:]

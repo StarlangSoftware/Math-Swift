@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Matrix : NSCopying{
+public class Matrix : NSCopying{
     
     private var __row: Int
     private var __col: Int

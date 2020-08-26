@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Distribution{
+public class Distribution{
     
     private static let Z_MAX = 6.0
     private static let Z_EPSILON = 0.000001
