@@ -18,7 +18,7 @@ public class Vector{
      *
         - Parameter values : {@link ArrayList} input.
      */
-    init(values: [Double]) {
+    public init(values: [Double]) {
         self.values = values
         __size = values.count
     }
@@ -32,7 +32,7 @@ public class Vector{
             - size: {@link ArrayList} size.
             - x : item to add values {@link ArrayList}.
      */
-    init(size: Int, x: Double) {
+    public init(size: Int, x: Double) {
         self.__size = size
         values = []
         for _ in 0..<size{
@@ -50,7 +50,7 @@ public class Vector{
             - index: to set a particular item.
             - x : item to add values {@link ArrayList}'s given index.
      */
-    init(size: Int, index: Int, x: Double) {
+    public init(size: Int, index: Int, x: Double) {
         self.__size = size
         values = []
         for _ in 0..<size{

@@ -21,7 +21,7 @@ public class Matrix : NSCopying{
      *      - row: is used to create matrix.
      *      - col: is used to create matrix.
      */
-    init(row: Int, col: Int){
+    public init(row: Int, col: Int){
         self.__row = row
         self.__col = col
         self.__values = Array(repeating: Array(repeating: 0.0, count: col), count: row)
@@ -48,7 +48,7 @@ public class Matrix : NSCopying{
      *      - min: minimum value.
      *      - max: maximum value.
      */
-    init(row: Int, col: Int, min: Double, max: Double){
+    public init(row: Int, col: Int, min: Double, max: Double){
         self.__row = row
         self.__col = col
         self.__values = Array(repeating: Array(repeating: 0.0, count: col), count: row)
@@ -65,7 +65,7 @@ public class Matrix : NSCopying{
      *
      * - Parameter size: is used declaring the size of the array.
      */
-    init(size: Int){
+    public init(size: Int){
         self.__row = size
         self.__col = size
         self.__values = Array(repeating: Array(repeating: 0.0, count: size), count: size)
@@ -74,7 +74,7 @@ public class Matrix : NSCopying{
         }
     }
     
-    init(rowVector: Vector, colVector: Vector){
+    public init(rowVector: Vector, colVector: Vector){
         self.__row = rowVector.size()
         self.__col = colVector.size()
         self.__values = Array(repeating: Array(repeating: 0.0, count: colVector.size()), count: rowVector.size())

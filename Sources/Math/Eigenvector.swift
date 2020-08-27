@@ -20,7 +20,7 @@ public class Eigenvector : Vector{
         - eigenvalue : eigenValue double input.
         - values : list input.
     */
-    init(eigenvalue: Double, values: [Double]){
+    public init(eigenvalue: Double, values: [Double]){
         self.eigenvalue = eigenvalue
         super.init(values: values)
     }
