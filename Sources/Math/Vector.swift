@@ -65,7 +65,7 @@ public class Vector{
 
     - Returns: result list.
     */
-    func biased() -> Vector{
+    public func biased() -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         for value in self.values{
             result.add(x: value)
@@ -79,7 +79,7 @@ public class Vector{
 
     - Parameter x : input to add values list.
     */
-    func add(x: Double){
+    public func add(x: Double){
         self.values.append(x)
         self.__size = self.__size + 1
     }
@@ -94,7 +94,7 @@ public class Vector{
     x : double
         input to insert to given index of values list.
     */
-    func insert(pos: Int, x: Double){
+    public func insert(pos: Int, x: Double){
         self.values.insert(x, at: pos)
         self.__size = self.__size + 1
     }
@@ -105,13 +105,13 @@ public class Vector{
 
     - Parameter pos : index to remove from values list.
     */
-    func remove(pos: Int){
+    public func remove(pos: Int){
         self.values.remove(at: pos)
         self.__size = self.__size - 1
     }
 
     ///The clear method sets all the elements of values list to 0.
-    func clear(){
+    public func clear(){
         for i in 0..<self.values.count{
             self.values[i] = 0
         }
@@ -122,7 +122,7 @@ public class Vector{
 
     - Returns: Sum of all elements in the vector.
     */
-    func sumOfElements() -> Double{
+    public func sumOfElements() -> Double{
         var total : Double = 0.0
         for i in 0..<self.__size{
             total += self.values[i]
@@ -137,7 +137,7 @@ public class Vector{
 
     - Returns: final maximum item's index.
     */
-    func maxIndex() -> Int{
+    public func maxIndex() -> Int{
         var index : Int = 0
         var maxValue : Double = self.values[0]
         for i in 1..<self.__size{
@@ -150,10 +150,10 @@ public class Vector{
     }
 
     /**
-    The sigmoid method loops through the values list and sets each ith item with sigmoid function, i.e
+    The sigmoid method loops through the values list and sets each ith item with sigmoid public function, i.e
     1 / (1 + Math.exp(-values.get(i))), i ranges from 0 to size.
     */
-    func sigmoid(){
+    public func sigmoid(){
         for i in 0..<self.__size{
             self.values[i] = 1 / (1 + exp(-self.values[i]))
         }
@@ -170,7 +170,7 @@ public class Vector{
 
     - Returns: result Vector.
     */
-    func skipVector(mod: Int, value: Int) -> Vector{
+    public func skipVector(mod: Int, value: Int) -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         var i : Int = value
         while i < self.__size{
@@ -186,7 +186,7 @@ public class Vector{
 
     - Parameter v : Vector to add.
     */
-    func addVector(v: Vector){
+    public func addVector(v: Vector){
         for i in 0..<self.__size{
             self.values[i] = self.values[i] + v.values[i]
         }
@@ -198,7 +198,7 @@ public class Vector{
 
     - Parameter v : Vector to subtract from values list.
     */
-    func subtract(v: Vector){
+    public func subtract(v: Vector){
         for i in 0..<self.__size{
             self.values[i] = self.values[i] - v.values[i]
         }
@@ -213,7 +213,7 @@ public class Vector{
 
     - Returns: new Vector with result list.
     */
-    func difference(v: Vector) -> Vector{
+    public func difference(v: Vector) -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         for i in 0..<self.__size{
             result.add(x: self.values[i] - v.values[i])
@@ -230,7 +230,7 @@ public class Vector{
 
     - Returns: result.
     */
-    func dotProduct(v: Vector) -> Double{
+    public func dotProduct(v: Vector) -> Double{
         var result : Double = 0
         for i in 0..<self.__size{
             result += self.values[i] * v.values[i]
@@ -244,7 +244,7 @@ public class Vector{
 
     - Returns: result.
     */
-    func dotProductWithSelf() -> Double{
+    public func dotProductWithSelf() -> Double{
         var result : Double = 0
         for i in 0..<self.__size{
             result += self.values[i] * self.values[i]
@@ -261,7 +261,7 @@ public class Vector{
 
     - Returns: with result list.
     */
-    func elementProduct(v: Vector) -> Vector{
+    public func elementProduct(v: Vector) -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         for i in 0..<self.__size{
             result.add(x: self.values[i] * v.values[i])
@@ -274,7 +274,7 @@ public class Vector{
 
     - Parameter value : is used to divide items of values list.
     */
-    func divide(value: Double){
+    public func divide(value: Double){
         for i in 0..<self.__size{
             self.values[i] = self.values[i] / value
         }
@@ -285,7 +285,7 @@ public class Vector{
 
     - Parameter value : is used to multiply items of values list.
     */
-    func multiply(value: Double){
+    public func multiply(value: Double){
         for i in 0..<self.__size{
             self.values[i] = self.values[i] * value
         }
@@ -299,7 +299,7 @@ public class Vector{
 
     - Returns: Vector result.
     */
-    func product(value: Double) -> Vector{
+    public func product(value: Double) -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         for i in 0..<self.__size{
             result.add(x: self.values[i] * value)
@@ -311,7 +311,7 @@ public class Vector{
     The l1Normalize method is used to apply Least Absolute Errors, it accumulates items of values list and sets
     each item by dividing it by the summation value.
     */
-    func l1Normalize(){
+    public func l1Normalize(){
         var total : Double = 0
         for i in 0..<self.__size{
             total += self.values[i]
@@ -327,7 +327,7 @@ public class Vector{
 
     - Returns: square root of this summation.
     */
-    func l2Norm() -> Double{
+    public func l2Norm() -> Double{
         var total : Double = 0
         for i in 0..<self.__size{
             total += pow(self.values[i], 2.0)
@@ -343,7 +343,7 @@ public class Vector{
 
     - Returns: dotProduct(v) / l2Norm() / v.l2Norm()
     */
-    func cosineSimilarity(v: Vector) -> Double{
+    public func cosineSimilarity(v: Vector) -> Double{
         return self.dotProduct(v: v) / self.l2Norm() / v.l2Norm()
     }
 
@@ -352,7 +352,7 @@ public class Vector{
 
     - Returns: size of the values list
     */
-    func size() -> Int{
+    public func size() -> Int{
         return self.values.count
     }
 
@@ -363,7 +363,7 @@ public class Vector{
 
     - Returns: the item at given index.
     */
-    func getValue(index: Int) -> Double{
+    public func getValue(index: Int) -> Double{
         return self.values[index]
     }
 
@@ -374,7 +374,7 @@ public class Vector{
         - index : index to set.
         - value : is used to set the given index
     */
-    func setValue(index: Int, value: Double){
+    public func setValue(index: Int, value: Double){
         self.values[index] = value
     }
 
@@ -385,7 +385,7 @@ public class Vector{
         - index : index to add the given value.
         - value : value to add to given index.
     */
-    func addValue(index: Int, value: Double){
+    public func addValue(index: Int, value: Double){
         self.values[index] += value
     }
 

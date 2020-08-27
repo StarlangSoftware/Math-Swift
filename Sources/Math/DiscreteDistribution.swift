@@ -22,7 +22,7 @@ public class DiscreteDistribution{
     item : Stringing
         String input.
     */
-    func addItem(item: String){
+    public func addItem(item: String){
         if data[item] != nil{
             data[item] = data[item]! + 1
         } else {
@@ -38,7 +38,7 @@ public class DiscreteDistribution{
 
     - Parameter item : String input.
     */
-    func removeItem(item: String){
+    public func removeItem(item: String){
         if data[item] != nil{
             data[item] = data[item]! - 1
             if data[item] == 0{
@@ -55,7 +55,7 @@ public class DiscreteDistribution{
 
     - Parameter distribution : DiscreteDistribution type input.
     */
-    func addDistribution(distribution: DiscreteDistribution){
+    public func addDistribution(distribution: DiscreteDistribution){
         for entry in distribution.data.keys{
             if data[entry] != nil{
                 data[entry] = data[entry]! + distribution.data[entry]!
@@ -74,7 +74,7 @@ public class DiscreteDistribution{
 
     - Parameter distribution : DiscreteDistribution type input.
     */
-    func removeDistribution(distribution: DiscreteDistribution){
+    public func removeDistribution(distribution: DiscreteDistribution){
         for entry in distribution.data.keys{
             if data[entry]! - distribution.data[entry]! != 0{
                 data[entry]! -= distribution.data[entry]!
@@ -91,7 +91,7 @@ public class DiscreteDistribution{
 
     - Returns: sum
     */
-    func getSum() -> Double{
+    public func getSum() -> Double{
         return self.sum
     }
 
@@ -102,7 +102,7 @@ public class DiscreteDistribution{
 
     - Returns: index of given item.
     */
-    func getIndex(item: String) -> Int{
+    public func getIndex(item: String) -> Int{
         return keys.firstIndex(of: item)!
     }
 
@@ -114,7 +114,7 @@ public class DiscreteDistribution{
 
     - Returns: true if this map contains a mapping for the given item.
     */
-    func containsItem(item: String) -> Bool{
+    public func containsItem(item: String) -> Bool{
         return data[item] != nil
     }
 
@@ -125,7 +125,7 @@ public class DiscreteDistribution{
 
     - Returns: the item at given index.
     */
-    func getItem(index: Int) -> String{
+    public func getItem(index: Int) -> String{
         return keys[index]
     }
 
@@ -136,7 +136,7 @@ public class DiscreteDistribution{
 
     - Returns: the value at given index.
     */
-    func getValue(index: Int) -> Int{
+    public func getValue(index: Int) -> Int{
         return data[keys[index]]!
     }
 
@@ -148,7 +148,7 @@ public class DiscreteDistribution{
 
     - Returns: the value to which the specified item is mapped
     */
-    func getCount(item: String) -> Int{
+    public func getCount(item: String) -> Int{
         return data[item]!
     }
 
@@ -157,7 +157,7 @@ public class DiscreteDistribution{
 
     - Returns: the entry with maximum value.
     */
-    func getMaxItem() -> String{
+    public func getMaxItem() -> String{
         var maxValue : Int = -1
         var maxItem : String = ""
         for item in data.keys{
@@ -169,7 +169,7 @@ public class DiscreteDistribution{
         return maxItem
     }
     
-    func size() -> Int{
+    public func size() -> Int{
         return data.count
     }
 
@@ -181,7 +181,7 @@ public class DiscreteDistribution{
 
     - Returns: the item with maximum value.
     */
-    func getMaxItemIncludeTheseOnly(includeTheseOnly: [String]) -> String{
+    public func getMaxItemIncludeTheseOnly(includeTheseOnly: [String]) -> String{
         var maxValue : Int = -1
         var maxItem : String = ""
         for item in includeTheseOnly{
@@ -205,7 +205,7 @@ public class DiscreteDistribution{
 
     - Returns: the probability to which the specified item is mapped.
     */
-    func getProbability(item: String) -> Double{
+    public func getProbability(item: String) -> Double{
         if data[item] != nil{
             return Double(data[item]!) / self.sum
         } else{
@@ -220,7 +220,7 @@ public class DiscreteDistribution{
 
     - Returns: the smoothed probability to which the specified item is mapped.
     */
-    func getProbabilityLaplaceSmoothing(item: String) -> Double{
+    public func getProbabilityLaplaceSmoothing(item: String) -> Double{
         if data[item] != nil{
             return (Double(data[item]!) + 1.0) / (self.sum + Double(data.count) + 1.0)
         } else {
@@ -233,7 +233,7 @@ public class DiscreteDistribution{
 
     - Returns: entropy value.
     */
-    func entropy() -> Double{
+    public func entropy() -> Double{
         var total : Double = 0.0
         for count in data.values{
             let probability : Double = Double(count) / self.sum

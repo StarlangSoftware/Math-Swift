@@ -9,7 +9,7 @@ import Foundation
 
 public class Eigenvector : Vector{
     
-    var eigenvalue: Double
+    private var eigenvalue: Double
     
     /**
     A constructor of Eigenvector which takes a double eigenValue and an list values as inputs.
@@ -30,7 +30,7 @@ public class Eigenvector : Vector{
 
     - Returns: eigenValue variable.
     */
-    func getEigenvalue() -> Double{
+    public func getEigenvalue() -> Double{
         return self.eigenvalue
     }
 

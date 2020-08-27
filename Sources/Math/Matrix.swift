@@ -27,7 +27,7 @@ public class Matrix : NSCopying{
         self.__values = Array(repeating: Array(repeating: 0.0, count: col), count: row)
     }
 
-    func copy(with zone: NSZone? = nil) -> Any {
+    public func copy(with zone: NSZone? = nil) -> Any {
         let copy = Matrix(row: __row, col: __col)
         for i in 0..<self.__row{
             for j in 0..<self.__col{
@@ -94,7 +94,7 @@ public class Matrix : NSCopying{
 
     - Returns: item at given index of values list.
     */
-    func getValue(rowNo: Int, colNo: Int) -> Double{
+    public func getValue(rowNo: Int, colNo: Int) -> Double{
         return self.__values[rowNo][colNo]
     }
 
@@ -106,7 +106,7 @@ public class Matrix : NSCopying{
         - colNo : integer input for column number.
         - value : is used to set at given index.
     */
-    func setValue(rowNo: Int, colNo: Int, value: Double){
+    public func setValue(rowNo: Int, colNo: Int, value: Double){
         self.__values[rowNo][colNo] = value
     }
 
@@ -118,7 +118,7 @@ public class Matrix : NSCopying{
         - colNo : integer input for column number.
         - value : is used to add to given item at given index.
     */
-    func addValue(rowNo: Int, colNo: Int, value: Double){
+    public func addValue(rowNo: Int, colNo: Int, value: Double){
         self.__values[rowNo][colNo] += value
     }
 
@@ -129,7 +129,7 @@ public class Matrix : NSCopying{
         - rowNo : integer input for row number.
         - colNo : integer input for column number.
     */
-    func increment(rowNo: Int, colNo: Int){
+    public func increment(rowNo: Int, colNo: Int){
         self.__values[rowNo][colNo] += 1
     }
 
@@ -138,7 +138,7 @@ public class Matrix : NSCopying{
 
     - Returns: row number.
     */
-    func getRow() -> Int{
+    public func getRow() -> Int{
         return self.__row
     }
 
@@ -149,7 +149,7 @@ public class Matrix : NSCopying{
 
     - Returns: Vector of values list at given row input.
     */
-    func getRowVector(row: Int) -> Vector{
+    public func getRowVector(row: Int) -> Vector{
         let rowList : [Double] = self.__values[row]
         let rowVector : Vector = Vector(values: rowList)
         return rowVector
@@ -160,7 +160,7 @@ public class Matrix : NSCopying{
 
     - Returns: column number.
     */
-    func getColumn() -> Int{
+    public func getColumn() -> Int{
         return self.__col
     }
 
@@ -171,7 +171,7 @@ public class Matrix : NSCopying{
      *
      - Returns: Vector of given column number.
     */
-    func getColumnVector(column: Int) -> [Double]{
+    public func getColumnVector(column: Int) -> [Double]{
         var columnVector : [Double] = []
         for i in 0..<self.__row{
             columnVector.append(self.__values[i][column])
@@ -183,7 +183,7 @@ public class Matrix : NSCopying{
     The columnWiseNormalize method, first accumulates items column by column then divides items
     by the summation.
     */
-    func columnWiseNormalize(){
+    public func columnWiseNormalize(){
         for i in 0..<self.__row{
             var total : Double = 0
             for j in 0..<self.__col{
@@ -201,7 +201,7 @@ public class Matrix : NSCopying{
 
     - Parameter constant : constant value to multiply items of values list.
     */
-    func multiplyWithConstant(constant: Double){
+    public func multiplyWithConstant(constant: Double){
         for i in 0..<self.__row{
             for j in 0..<self.__col{
                 self.__values[i][j] *= constant
@@ -215,7 +215,7 @@ public class Matrix : NSCopying{
 
     - Parameter constant : constant value to divide items of values list.
     */
-    func divideByConstant(constant: Double){
+    public func divideByConstant(constant: Double){
         for i in 0..<self.__row{
             for j in 0..<self.__col{
                 self.__values[i][j] /= constant
@@ -230,7 +230,7 @@ public class Matrix : NSCopying{
 
     - Parameter m : Matrix type input.
     */
-    func add(m: Matrix){
+    public func add(m: Matrix){
         for i in 0..<self.__row{
             for j in 0..<self.__col{
                 self.__values[i][j] += m.__values[i][j]
@@ -250,7 +250,7 @@ public class Matrix : NSCopying{
     v : Vector
         Vector type input.
     */
-    func addRowVector(rowNo: Int, v: Vector){
+    public func addRowVector(rowNo: Int, v: Vector){
         for i in 0..<self.__col{
             self.__values[rowNo][i] += v.getValue(index: i)
         }
@@ -263,7 +263,7 @@ public class Matrix : NSCopying{
 
     - Parameter m : Matrix type input.
     */
-    func subtract(m: Matrix){
+    public func subtract(m: Matrix){
         for i in 0..<self.__row{
             for j in 0..<self.__col{
                 self.__values[i][j] -= m.__values[i][j]
@@ -281,7 +281,7 @@ public class Matrix : NSCopying{
 
     - Returns: Vector that holds the result.
     */
-    func multiplyWithVectorFromLeft(v: Vector) -> Vector{
+    public func multiplyWithVectorFromLeft(v: Vector) -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         for i in 0..<self.__col{
             var total : Double = 0.0
@@ -303,7 +303,7 @@ public class Matrix : NSCopying{
 
     - Returns: Vector that holds the result.
     */
-    func multiplyWithVectorFromRight(v: Vector) -> Vector{
+    public func multiplyWithVectorFromRight(v: Vector) -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         for i in 0..<self.__row{
             var total : Double = 0.0
@@ -323,7 +323,7 @@ public class Matrix : NSCopying{
 
     - Returns: summation of given column of values list.
     */
-    func columnSum(columnNo: Int) -> Double{
+    public func columnSum(columnNo: Int) -> Double{
         var total : Double = 0
         for i in 0..<self.__row{
             total += self.__values[i][columnNo]
@@ -337,7 +337,7 @@ public class Matrix : NSCopying{
 
     - Returns: Vector that holds column sum.
     */
-    func sumOfRows() -> Vector{
+    public func sumOfRows() -> Vector{
         let result : Vector = Vector(size: 0, x: 0)
         for i in 0..<self.__col{
             result.add(x: self.columnSum(columnNo: i))
@@ -352,7 +352,7 @@ public class Matrix : NSCopying{
      
      - Returns: summation of given row of values {@link java.lang.reflect.Array}.
     */
-    func rowSum(rowNo: Int) -> Double{
+    public func rowSum(rowNo: Int) -> Double{
         var total : Double = 0
         for i in 0..<self.__col{
             total += self.__values[rowNo][i]
@@ -370,7 +370,7 @@ public class Matrix : NSCopying{
 
     - Returns: result Matrix.
     */
-    func multiply(m: Matrix) -> Matrix{
+    public func multiply(m: Matrix) -> Matrix{
         let result : Matrix = Matrix(row: self.__row, col: m.__col)
         for i in 0..<self.__row{
             for j in 0..<m.__col{
@@ -393,7 +393,7 @@ public class Matrix : NSCopying{
 
     - Returns: result Matrix.
     */
-    func elementProduct(m: Matrix) -> Matrix{
+    public func elementProduct(m: Matrix) -> Matrix{
         let result : Matrix = Matrix(row: self.__row, col: self.__col)
         for i in 0..<self.__row{
             for j in 0..<self.__col{
@@ -409,7 +409,7 @@ public class Matrix : NSCopying{
 
     - Returns: sum of the items of values list.
     */
-    func sumOfElements() -> Double{
+    public func sumOfElements() -> Double{
         var total : Double = 0.0
         for i in 0..<self.__row{
             total += rowSum(rowNo: i)
@@ -422,7 +422,7 @@ public class Matrix : NSCopying{
 
     - Returns: sum of items at diagonal.
     */
-    func trace() -> Double{
+    public func trace() -> Double{
         var total : Double = 0.0
         for i in 0..<self.__row{
             total += self.__values[i][i]
@@ -436,7 +436,7 @@ public class Matrix : NSCopying{
 
     - Returns: Matrix type output.
     */
-    func transpose() -> Matrix{
+    public func transpose() -> Matrix{
         let result : Matrix = Matrix(row: self.__col, col: self.__row)
         for i in 0..<self.__row{
             for j in 0..<self.__col{
@@ -452,14 +452,14 @@ public class Matrix : NSCopying{
     to the new result Matrix.
 
     - Parameters:
-        - rowStart : integer input for funcining starting index of row.
-        - rowEnd : integer input for funcining ending index of row.
-        - colStart : integer input for funcining starting index of column.
-        - colEnd : integer input for funcining ending index of column.
+        - rowStart : integer input for public funcining starting index of row.
+        - rowEnd : integer input for public funcining ending index of row.
+        - colStart : integer input for public funcining starting index of column.
+        - colEnd : integer input for public funcining ending index of column.
 
     - Returns: result Matrix.
     */
-    func partial(rowStart: Int, rowEnd: Int, colStart: Int, colEnd: Int) -> Matrix{
+    public func partial(rowStart: Int, rowEnd: Int, colStart: Int, colEnd: Int) -> Matrix{
         let result : Matrix = Matrix(row: rowEnd - rowStart + 1, col: colEnd - colStart + 1)
         for i in rowStart..<rowEnd + 1{
             for j in colStart..<colEnd + 1{
@@ -475,7 +475,7 @@ public class Matrix : NSCopying{
 
     - Returns: true if items are equal, false otherwise.
     */
-    func isSymmetric() -> Bool{
+    public func isSymmetric() -> Bool{
         for i in 0..<self.__row - 1{
             for j in 0..<self.__row{
                 if self.__values[i][j] != self.__values[j][i]{
@@ -493,7 +493,7 @@ public class Matrix : NSCopying{
 
     - Returns: determinant of values list.
     */
-    func determinant() -> Double{
+    public func determinant() -> Double{
         var det : Double = 1.0
         let copyOfMatrix : Matrix = self.copy() as! Matrix
         for i in 0..<self.__row{
@@ -512,7 +512,7 @@ public class Matrix : NSCopying{
     }
 
     ///The inverse method finds the inverse of values list.
-    func inverse(){
+    public func inverse(){
         let b : Matrix = Matrix(row: self.__row, col: self.__row)
         var indxc : [Int] = []
         var indxr : [Int] = []
@@ -594,7 +594,7 @@ public class Matrix : NSCopying{
 
     - Returns: Matrix type output.
     */
-    func choleskyDecomposition() -> Matrix{
+    public func choleskyDecomposition() -> Matrix{
         let b : Matrix = Matrix(row: self.__row, col: self.__col)
         for i in 0..<self.__row{
             for j in i..<self.__row{
@@ -625,7 +625,7 @@ public class Matrix : NSCopying{
         - k : integer input.
         - l : integer input.
     */
-    func __rotate(s: Double, tau: Double, i: Int, j: Int, k: Int, l: Int){
+    private func __rotate(s: Double, tau: Double, i: Int, j: Int, k: Int, l: Int){
         let g : Double = self.__values[i][j]
         let h : Double = self.__values[k][l]
         self.__values[i][j] = g - s * (h + g * tau)
@@ -638,7 +638,7 @@ public class Matrix : NSCopying{
 
     - Returns: A sorted list of Eigenvectors.
     */
-    func characteristics() -> [Eigenvector]{
+    public func characteristics() -> [Eigenvector]{
         let matrix1 : Matrix = self.copy() as! Matrix
         let v : Matrix = Matrix(size: self.__row)
         var d : [Double] = []
@@ -721,7 +721,7 @@ public class Matrix : NSCopying{
                 result.append(Eigenvector(eigenvalue: d[i], values: v.getColumnVector(column: i)))
             }
         }
-        result.sort(by: {$0.eigenvalue > $1.eigenvalue})
+        result.sort(by: {$0.getEigenvalue() > $1.getEigenvalue()})
         return result
     }
 

@@ -28,7 +28,7 @@ public class Distribution{
 
     - Returns: 0 if input is less than -BIGX, Euler's number e raised to the power of x otherwise.
     */
-    static func __ex(x: Double) -> Double{
+    static public func __ex(x: Double) -> Double{
         if x < -Distribution.BIGX{
             return 0
         }
@@ -44,7 +44,7 @@ public class Distribution{
 
     - Returns: beta distribution at poInt x.
     */
-    static func beta(x: [Double]) -> Double{
+    static public func beta(x: [Double]) -> Double{
         var total : Double = 0.0
         var result : Double = 0.0
         for i in 0..<x.count{
@@ -63,7 +63,7 @@ public class Distribution{
 
     - Returns: the logarithmic result of the gamma distribution at poInt x.
     */
-    static func gammaLn(x: Double) -> Double{
+    static public func gammaLn(x: Double) -> Double{
         let cof = [76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5]
         var y : Double = x
         var tmp : Double = x + 5.5
@@ -85,7 +85,7 @@ public class Distribution{
 
     - Returns: normalized value of given input.
     */
-    static func zNormal(z: Double) -> Double{
+    static public func zNormal(z: Double) -> Double{
         var y, x, w : Double
         if z == 0.0{
             x = 0.0
@@ -122,7 +122,7 @@ public class Distribution{
 
     - Returns: the Z-Inverse of given probability.
     */
-    static func zInverse(p: Double) -> Double{
+    static public func zInverse(p: Double) -> Double{
         var minz : Double = -Distribution.Z_MAX
         var maxz : Double = Distribution.Z_MAX
         var zval : Double = 0.0
@@ -152,7 +152,7 @@ public class Distribution{
 
     - Returns: the Chi Squared result.
      */
-    static func chiSquare(x: Double, freedom: Int) -> Double{
+    static public func chiSquare(x: Double, freedom: Int) -> Double{
         var a, s, e, c, z : Double
         var y : Double = 0
         var even : Bool
@@ -218,7 +218,7 @@ public class Distribution{
 
     - Returns: the chiSquare-Inverse of given probability.
     */
-    static func chiSquareInverse(p: Double, freedom: Int) -> Double{
+    static public func chiSquareInverse(p: Double, freedom: Int) -> Double{
         var minchisq : Double = 0.0
         var maxchisq : Double = Distribution.CHI_MAX
         if p <= 0.0{
@@ -251,7 +251,7 @@ public class Distribution{
 
     -  Returns: the F-Distribution result.
     */
-    static func fDistribution(F: Double, freedom1: Int, freedom2: Int) -> Double{
+    static public func fDistribution(F: Double, freedom1: Int, freedom2: Int) -> Double{
         var i, j, a, b : Int
         var w, y, z, d, p: Double
         if F < Distribution.F_EPSILON || freedom1 < 1 || freedom2 < 1{
@@ -330,7 +330,7 @@ public class Distribution{
 
     - Returns: the F-Distribution Inverse of given probability.
     */
-    static func fDistributionInverse(p: Double, freedom1: Int, freedom2: Int) -> Double{
+    static public func fDistributionInverse(p: Double, freedom1: Int, freedom2: Int) -> Double{
         var fval : Double
         var maxf : Double = Distribution.F_MAX
         var minf : Double = 0.0
@@ -363,7 +363,7 @@ public class Distribution{
 
     - Returns: the T-Distribution result.
     */
-    static func tDistribution(T: Double, freedom: Int) -> Double{
+    static public func tDistribution(T: Double, freedom: Int) -> Double{
         if T >= 0 {
             return Distribution.fDistribution(F: T * T, freedom1: 1, freedom2: freedom) / 2
         } else {
@@ -380,7 +380,7 @@ public class Distribution{
 
     - Returns: the T-Distribution Inverse of given probability.
     */
-    static func tDistributionInverse(p: Double, freedom: Int) -> Double{
+    static public func tDistributionInverse(p: Double, freedom: Int) -> Double{
         if p < 0.5{
             return sqrt(Distribution.fDistributionInverse(p: p * 2, freedom1: 1, freedom2: freedom))
         } else {
