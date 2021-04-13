@@ -13,6 +13,9 @@ public class DiscreteDistribution{
     private var data: [String: Int] = [:]
     private var keys: [String] = []
 
+    public func DiscreteDistribution(){
+    }
+    
     /**
     The addItem method takes a String item as an input and if this map contains a mapping for the item it puts the
     item with given value + 1, else it puts item with value of 1.
