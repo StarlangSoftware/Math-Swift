@@ -13,7 +13,7 @@ public class DiscreteDistribution{
     private var data: [String: Int] = [:]
     private var keys: [String] = []
 
-    public func DiscreteDistribution(){
+    public init(){
     }
     
     /**
