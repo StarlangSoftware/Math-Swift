@@ -244,4 +244,8 @@ public class DiscreteDistribution{
         }
         return total
     }
+    
+    public func keySet() -> [String]{
+        return keys
+    }
 }

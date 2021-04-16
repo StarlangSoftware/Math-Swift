@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Vector{
+public class Vector : Equatable{
     
     private var __size : Int
     private var values : [Double]
@@ -57,6 +57,18 @@ public class Vector{
             values.append(0.0);
         }
         values[index] = x;
+    }
+
+    public static func == (lhs: Vector, rhs: Vector) -> Bool {
+        if lhs.__size != rhs.__size{
+            return false
+        }
+        for i in 0..<lhs.__size{
+            if lhs.getValue(index: i) != rhs.getValue(index: i){
+                return false
+            }
+        }
+        return true
     }
 
     /**
