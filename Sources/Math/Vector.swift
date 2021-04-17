@@ -282,6 +282,24 @@ public class Vector : Equatable{
     }
 
     /**
+     * The multiply method takes a {@link Vector} v as an input and creates new {@link Matrix} m of [size x size of input v].
+     * It loops through the the both values {@link ArrayList} and given vector's values {@link ArrayList}, then multiply
+     * each item with other with other items and puts to the new {@link Matrix} m.
+     - Parameters:
+        - v: Vector input.
+     - Returns: Matrix that has multiplication of two vectors.
+     */
+    public func multiply(v: Vector) -> Matrix{
+        let m : Matrix = Matrix(row: __size, col: v.__size)
+        for i in 0..<__size{
+            for j in 0..<v.__size{
+                m.setValue(rowNo: i, colNo: j, value: values[i] * v.values[j])
+            }
+        }
+        return m
+    }
+    
+    /**
     The divide method takes a double value as an input and divides each item of values list with given value.
 
     - Parameter value : is used to divide items of values list.
