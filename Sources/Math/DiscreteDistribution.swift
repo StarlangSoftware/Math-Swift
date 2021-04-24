@@ -215,6 +215,14 @@ public class DiscreteDistribution{
             return 0.0
         }
     }
+    
+    public func getProbabilityDistribution() -> [String : Double]{
+        var result : [String: Double] = [:]
+        for item in keys{
+            result[item] = getProbability(item: item)
+        }
+        return result
+    }
 
     /**
     The getProbabilityLaplaceSmoothing method takes an item as an input returns the smoothed value to which the
