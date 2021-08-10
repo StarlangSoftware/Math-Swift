@@ -172,6 +172,41 @@ public class Vector : Equatable{
     }
 
     /**
+     * The tanh method loops through the values {@link ArrayList} and sets each ith item with tanh function, i.e, i
+     * ranges from 0 to size.
+     */
+    public func tanh(){
+        for i in 0..<self.__size{
+            self.values[i] = (exp(self.values[i]) - exp(-self.values[i])) / (exp(self.values[i]) + exp(-self.values[i]))
+        }
+    }
+
+    /**
+     * The relu method loops through the values {@link ArrayList} and sets each ith item with relu function, i.e, i
+     * ranges from 0 to size.
+     */
+    public func relu(){
+        for i in 0..<self.__size{
+            if self.values[i] < 0{
+                self.values[i] = 0.0
+            }
+        }
+    }
+
+    /**
+     * The relu method loops through the values {@link ArrayList} and sets each ith item with the derivative of relu function, i.e, i ranges from 0 to size.
+     */
+    public func reluDerivative(){
+        for i in 0..<self.__size{
+            if self.values[i] > 0{
+                self.values[i] = 1.0
+            } else {
+                self.values[i] = 0.0
+            }
+        }
+    }
+
+    /**
     The skipVector method takes a mod and a value as inputs. It creates a new result Vector, and assigns given input
     value to i. While i is less than the size, it adds the ith item of values {@link ArrayList} to the result and
     increments i by given mod input.
