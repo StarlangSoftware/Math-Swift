@@ -1,4 +1,5 @@
 import XCTest
+import Util
 @testable import Math
 
 final class MatrixTest: XCTestCase {
@@ -34,7 +35,7 @@ final class MatrixTest: XCTestCase {
         }
         self.V = Vector(size: 1000, x: 1.0)
         self.vr = Vector(size: 100, x: 1.0)
-        self.random = Matrix(row: 100, col: 100, min: 1, max: 10)
+        self.random = Matrix(row: 100, col: 100, min: 1, max: 10, random: Random(seed: 1))
         self.originalSum = self.random.sumOfElements()
         self.identity = Matrix(size: 100)
     }

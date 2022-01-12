@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Util
 
 public class Matrix : NSCopying{
     
@@ -48,13 +49,13 @@ public class Matrix : NSCopying{
      *      - min: minimum value.
      *      - max: maximum value.
      */
-    public init(row: Int, col: Int, min: Double, max: Double){
+    public init(row: Int, col: Int, min: Double, max: Double, random: Random){
         self.__row = row
         self.__col = col
         self.__values = Array(repeating: Array(repeating: 0.0, count: col), count: row)
         for i in 0..<row{
             for j in 0..<col{
-                self.__values[i][j] = Double.random(in: min..<max)
+                self.__values[i][j] = random.nextDouble(min: min, max: max)
             }
         }
     }
