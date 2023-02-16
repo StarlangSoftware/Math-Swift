@@ -48,6 +48,7 @@ public class DiscreteDistribution{
                 data[item] = nil
                 keys.remove(at: keys.firstIndex(of: item)!)
             }
+            self.sum = self.sum - 1
         }
     }
 
