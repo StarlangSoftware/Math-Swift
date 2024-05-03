@@ -28,6 +28,9 @@ public class Matrix : NSCopying{
         self.__values = Array(repeating: Array(repeating: 0.0, count: col), count: row)
     }
 
+    /// The overridden clone method creates new Matrix and copies the content of values array into new matrix.
+    /// - Parameter zone: -
+    /// - Returns: Matrix which is the copy of values array.
     public func copy(with zone: NSZone? = nil) -> Any {
         let copy = Matrix(row: __row, col: __col)
         for i in 0..<self.__row{
@@ -75,6 +78,10 @@ public class Matrix : NSCopying{
         }
     }
     
+    /// Initializes the matrix y multiplying two vectors of sizes n times 1 and 1 times m.
+    /// - Parameters:
+    ///   - rowVector: Row vector of size n times 1
+    ///   - colVector: Column vector of size 1 times m
     public init(rowVector: Vector, colVector: Vector){
         self.__row = rowVector.size()
         self.__col = colVector.size()

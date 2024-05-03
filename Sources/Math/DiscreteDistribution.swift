@@ -173,6 +173,9 @@ public class DiscreteDistribution{
         return maxItem
     }
     
+    
+    /// Returns size of the distribution
+    /// - Returns: Size of the distribution
     public func size() -> Int{
         return data.count
     }
@@ -217,6 +220,8 @@ public class DiscreteDistribution{
         }
     }
     
+    /// Returns the distribution as a probability distribution
+    /// - Returns: Probability distribution
     public func getProbabilityDistribution() -> [String : Double]{
         var result : [String: Double] = [:]
         for item in keys{
@@ -254,6 +259,8 @@ public class DiscreteDistribution{
         return total
     }
     
+    /// Returns the item list.
+    /// - Returns: Item list.
     public func keySet() -> [String]{
         return keys
     }
